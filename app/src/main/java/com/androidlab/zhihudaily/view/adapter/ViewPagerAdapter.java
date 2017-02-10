@@ -7,6 +7,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 
+import com.androidlab.zhihudaily.presenter.DailyPresenter;
+import com.androidlab.zhihudaily.presenter.MeizhiPresenter;
+import com.androidlab.zhihudaily.view.fragment.CollectionFragment;
+import com.androidlab.zhihudaily.view.fragment.DailyUiFragment;
+import com.androidlab.zhihudaily.view.fragment.MeizhiFragment;
+import com.androidlab.zhihudaily.view.fragment.RecentDailyFragment;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,22 +22,33 @@ import java.util.List;
  */
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
+    private List<Fragment> mFragmentList = new ArrayList<Fragment>();
+    private List<String> mTitles = new ArrayList<String>();
 
-    private List<String> mTitle;
-    private List<Fragment> mFragmentList;
+    private MeizhiFragment mMeizhiFragment;
+    private DailyUiFragment mDailyUiFragment;
+
 
     private Context mContext;
 
 
     public ViewPagerAdapter(FragmentManager fm,
-                            Context context,
-                            List<Fragment> mFragmentLists,
-                            List<String> mTitles
-                            ) {
+                            Context context
+
+    ) {
         super(fm);
 
-        this.mTitle=mTitles;
-        this.mFragmentList = mFragmentLists;
+        mMeizhiFragment=MeizhiFragment.newInstance();
+        new MeizhiPresenter(mMeizhiFragment);
+        mFragmentList.add(mMeizhiFragment);
+
+        mDailyUiFragment=DailyUiFragment.newInstance();
+        new DailyPresenter(mDailyUiFragment);
+        mFragmentList.add(mDailyUiFragment);
+
+        mTitles.add("图片欣赏");
+        mTitles.add("新闻看看");
+
         this.mContext = context;
 
     }
@@ -40,7 +59,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     }
 
     public CharSequence getPageTitle(int position) {
-            return mTitle.get(position);
+        return mTitles.get(position);
     }
 
     @Override

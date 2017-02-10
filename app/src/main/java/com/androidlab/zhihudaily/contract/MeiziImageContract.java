@@ -2,6 +2,9 @@ package com.androidlab.zhihudaily.contract;
 
 import com.androidlab.zhihudaily.contract.base.BasePresenter;
 import com.androidlab.zhihudaily.contract.base.BaseView;
+import com.androidlab.zhihudaily.data.bean.MeizhiBean;
+
+import java.util.List;
 
 /**
  * Created by Haodong on 2017/1/22.
@@ -16,6 +19,7 @@ public interface MeiziImageContract {
          */
 
         void showMeizhi();
+        void setData(List<MeizhiBean.ResultsBean> list);
 
 
     }

@@ -8,25 +8,19 @@
     android:layout_height="match_parent"
     tools:context="com.androidlab.zhihudaily.view.activity.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <include layout="@layout/toobar"/>
 
         <android.support.design.widget.CoordinatorLayout
             android:id="@+id/coordinator_main_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
-            <FrameLayout
-                android:id="@+id/content_frame_main"
+            <include layout="@layout/toobar"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content">
 
+            </android.support.v4.view.ViewPager>
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/enter_floating_button"
@@ -35,11 +29,9 @@
                 android:layout_gravity="right|bottom"
                 android:src="@drawable/float_action_but"
                 />
-
-
         </android.support.design.widget.CoordinatorLayout>
 
-    </LinearLayout>
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
@@ -49,7 +41,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navi_header"
         app:menu="@menu/navi_menu">
-
 
     </android.support.design.widget.NavigationView>
 

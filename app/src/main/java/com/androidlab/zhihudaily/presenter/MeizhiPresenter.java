@@ -5,6 +5,9 @@ import android.support.annotation.NonNull;
 import com.androidlab.zhihudaily.contract.MeiziImageContract;
 import com.androidlab.zhihudaily.data.bean.MeizhiBean;
 import com.androidlab.zhihudaily.data.getdata.HttpMthodMeizhi;
+import com.androidlab.zhihudaily.utils.Logger;
+
+import java.util.Random;
 
 import rx.Subscriber;
 
@@ -18,21 +21,23 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
 
     private HttpMthodMeizhi mHttpMthodMeizhi;
 
+    private Subscriber subscriber;
+
 
     public MeizhiPresenter(MeiziImageContract.View view) {
 
-        mHttpMthodMeizhi=HttpMthodMeizhi.getInstance();
+        mHttpMthodMeizhi = HttpMthodMeizhi.getInstance();
         mView = view;
         mView.setPresenter(this);
     }
 
     @Override
     public void loadMeizhi() {
-        mHttpMthodMeizhi.getGankMeizi(new Subscriber<MeizhiBean>() {
-            @Override
-            public void onCompleted() {
+            subscriber = new Subscriber<MeizhiBean>() {
+                @Override
+                public void onCompleted() {
 
-            }
+                }
 
             @Override
             public void onError(Throwable e) {
@@ -40,12 +45,18 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
             }
 
             @Override
-            public void onNext(MeizhiBean meizhiBean) {
+            public void onNext(MeizhiBean resultsBean) {
+               if(resultsBean.getResults().size()!=0){
+                   Logger.error("yhd","datas != null");
+                   mView.setData(resultsBean.getResults());
 
 
+               }
 
             }
-        },0,10);
+
+
+        };
 
     }
 
@@ -57,12 +68,15 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
     @Override
     public void success(boolean active) {
 
+
     }
 
 
     @Override
     public void start() {
+        Random random=new Random();
         loadMeizhi();
+        HttpMthodMeizhi.getInstance().getGankMeizi(subscriber,random.nextInt(45) ,random.nextInt(12));
 
     }
 }

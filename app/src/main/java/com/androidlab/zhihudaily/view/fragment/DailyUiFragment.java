@@ -17,7 +17,7 @@ import com.androidlab.zhihudaily.presenter.DailyPresenter;
  */
 
 public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.View {
-    private ZhihuDailyContract.Presenter mPresenter;
+    private static ZhihuDailyContract.Presenter mPresenter;
 
 
     public static DailyUiFragment newInstance() {
@@ -36,7 +36,6 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.daily_news_layout, container, false);
-
 
     }
 

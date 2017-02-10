@@ -2,7 +2,6 @@ package com.androidlab.zhihudaily.view.activity;
 
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,13 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.androidlab.zhihudaily.R;
-import com.androidlab.zhihudaily.contract.ZhihuDailyContract;
 import com.androidlab.zhihudaily.utils.ActivityUtils;
-import com.androidlab.zhihudaily.utils.Logger;
 import com.androidlab.zhihudaily.utils.ShowToast;
 import com.androidlab.zhihudaily.view.adapter.ViewPagerAdapter;
 import com.androidlab.zhihudaily.view.fragment.CollectionFragment;
-import com.androidlab.zhihudaily.view.fragment.RecentDailyFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +31,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,13 +47,14 @@ public class MainActivity extends AppCompatActivity {
     Toolbar mMainToolbar;
     @BindView(R.id.enter_floating_button)
     FloatingActionButton mEnterFloatingButton;
+    @BindView(R.id.tab_head)
+    TabLayout mTabHead;
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
 
     private long time = 0;
     private ViewPagerAdapter mViewPagerAdapter;
 
-
-    private List<Fragment> mFragmentList = new ArrayList<Fragment>();
-    private List<String> mTitles = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
+        mViewPager.setAdapter(mViewPagerAdapter);
+        mTabHead.setupWithViewPager(mViewPager);
 
 
     }

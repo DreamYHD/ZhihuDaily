@@ -8,7 +8,7 @@ public class BaseHttpData {
 
 
 
-    public static final String Base_Meizhi_Url="http://gank.io/api";
+    public static final String Base_Meizhi_Url="http://gank.io/api/";
 
     public static final int DEFAULT_TIMEOUT_CONNECT=5;
 

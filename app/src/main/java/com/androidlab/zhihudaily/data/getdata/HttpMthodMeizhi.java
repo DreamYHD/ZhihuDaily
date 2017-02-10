@@ -15,6 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * 封装wan
  * Created by Haodong on 2017/2/6.
  */
 
@@ -25,6 +26,8 @@ public class HttpMthodMeizhi extends BaseHttpData {
     private GankApi mGankApi;
 
     private HttpMthodMeizhi() {
+
+
 
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT_CONNECT, TimeUnit.SECONDS);
