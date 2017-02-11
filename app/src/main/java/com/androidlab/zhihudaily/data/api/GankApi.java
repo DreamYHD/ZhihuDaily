@@ -11,6 +11,12 @@ import rx.Observable;
  */
 
 public interface GankApi {
+    /**
+     * 获取妹子图片
+     * @param count
+     * @param page
+     * @return
+     */
 
     @GET("data/福利/{count}/{page}")
     Observable<MeizhiBean>  getGankMeizi(@Path("count") int count, @Path("page") int page);

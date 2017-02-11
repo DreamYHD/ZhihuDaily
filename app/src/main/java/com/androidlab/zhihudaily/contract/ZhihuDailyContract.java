@@ -2,6 +2,10 @@ package com.androidlab.zhihudaily.contract;
 
 import com.androidlab.zhihudaily.contract.base.BasePresenter;
 import com.androidlab.zhihudaily.contract.base.BaseView;
+import com.androidlab.zhihudaily.data.bean.NewsBean;
+import com.androidlab.zhihudaily.view.adapter.NewsAdapter;
+
+import java.util.List;
 
 /**
  * Created by Haodong on 2017/1/21.
@@ -19,11 +23,16 @@ public interface ZhihuDailyContract {
         void showDailyNews();
 
         /**
+         * 传入数据
+         */
+        void setDate(List<NewsBean.StoriesBean>storiesBeen,List<NewsBean.TopStoriesBean>topStoriesBeen);
+
+        /**
          * 跳转到下个页面
-         * @param newsId
+         * @param url
          */
 
-        void goNewsDetail(String newsId);
+        void goNewsDetail(String url);
 
 
 
@@ -35,14 +44,14 @@ public interface ZhihuDailyContract {
          * 加载最近的新闻
          */
 
-        void loadLatestDaily(String news);
+        void loadLatestDaily();
 
         /**
-         * 加载某一天的新闻 time：2017-06-23
-         * @param time
+         * 加载新闻的新具体内容e：10213
+         * @param id
          */
 
-        void loadDaily(String time);
+        void loadDaily(int  id);
 
         /**
          * 加载指示器

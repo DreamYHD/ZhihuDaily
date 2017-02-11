@@ -26,7 +26,7 @@ public class ActivityUtils {
 
     }
     public  static void replaceFragemntToActivity(FragmentManager fragmentManager,
-                                                  CollectionFragment fragment,
+                                                  Fragment fragment,
                                                   int frameId){
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(frameId,fragment);

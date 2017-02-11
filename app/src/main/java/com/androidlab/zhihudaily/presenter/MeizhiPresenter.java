@@ -7,6 +7,8 @@ import com.androidlab.zhihudaily.data.bean.MeizhiBean;
 import com.androidlab.zhihudaily.data.getdata.HttpMthodMeizhi;
 import com.androidlab.zhihudaily.utils.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import rx.Subscriber;
@@ -22,6 +24,8 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
     private HttpMthodMeizhi mHttpMthodMeizhi;
 
     private Subscriber subscriber;
+
+
 
 
     public MeizhiPresenter(MeiziImageContract.View view) {
@@ -49,8 +53,6 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
                if(resultsBean.getResults().size()!=0){
                    Logger.error("yhd","datas != null");
                    mView.setData(resultsBean.getResults());
-
-
                }
 
             }
@@ -76,7 +78,7 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
     public void start() {
         Random random=new Random();
         loadMeizhi();
-        HttpMthodMeizhi.getInstance().getGankMeizi(subscriber,random.nextInt(45) ,random.nextInt(12));
+        mHttpMthodMeizhi.getGankMeizi(subscriber,random.nextInt(45) ,random.nextInt(12));
 
     }
 }

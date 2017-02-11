@@ -10,6 +10,8 @@ public class BaseHttpData {
 
     public static final String Base_Meizhi_Url="http://gank.io/api/";
 
+    public static final String Base_Daily_Url="http://news-at.zhihu.com/api/4/";
+
     public static final int DEFAULT_TIMEOUT_CONNECT=5;
 
     public static final int DEFAULT_TIMEOUT_WRITE=5;

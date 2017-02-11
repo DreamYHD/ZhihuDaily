@@ -9,13 +9,12 @@ import android.widget.ImageView;
 
 import com.androidlab.zhihudaily.R;
 import com.androidlab.zhihudaily.data.bean.MeizhiBean;
+
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Haodong on 2017/1/30.
@@ -46,8 +45,8 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.ViewHolder> 
         if (null != images.get(position).getUrl()) {
             Glide.with(mContext)
                     .load(images.get(position).getUrl())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .override(650, 750)
+                    .placeholder(R.drawable.load)
+                    .override(750, 750)
                     .fitCenter()
                     .into(holder.mImageView);
         }
@@ -60,12 +59,13 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-       private ImageView mImageView;
+        private ImageView mImageView;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mImageView= (ImageView) itemView.findViewById(R.id.item_image);
+            mImageView = (ImageView) itemView.findViewById(R.id.item_image);
+
         }
     }
 }

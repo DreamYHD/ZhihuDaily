@@ -71,6 +71,7 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                //判断是否滑动到底部
                 if (!ViewCompat.canScrollVertically(recyclerView, 1)){
 
                     mPresenter.start();
@@ -83,15 +84,11 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     }
 
     @Override
-    public void showMeizhi() {
-
-    }
-
-    @Override
     public void setPresenter(MeiziImageContract.Presenter presenter) {
         mPresenter = presenter;
 
     }
+    //添加数据
     public void setData(List<MeizhiBean.ResultsBean> list) {
 
         this.list.addAll(list);
