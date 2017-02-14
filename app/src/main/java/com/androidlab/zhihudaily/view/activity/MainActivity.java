@@ -3,12 +3,12 @@ package com.androidlab.zhihudaily.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -24,9 +24,9 @@ import com.androidlab.zhihudaily.utils.ActivityUtils;
 import com.androidlab.zhihudaily.utils.ShowToast;
 import com.androidlab.zhihudaily.view.adapter.ViewPagerAdapter;
 import com.androidlab.zhihudaily.view.fragment.CollectionFragment;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.stylingandroid.prism.Prism;
+import com.stylingandroid.prism.filter.Filter;
+import com.stylingandroid.prism.filter.TintFilter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,9 +51,12 @@ public class MainActivity extends AppCompatActivity {
     TabLayout mTabHead;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
+    @BindView(R.id.appBar)
+    AppBarLayout mAppBar;
 
     private long time = 0;
     private ViewPagerAdapter mViewPagerAdapter;
+    Prism prism;
 
 
     @Override
@@ -68,8 +71,22 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
+        initColor();
         initView();
         setlistener();
+
+    }
+
+    private void initColor() {
+
+
+        // --- 创建 Prism 实例 ---------------------
+        prism = Prism.Builder.newInstance()
+                .background(mAppBar)
+                .background(getWindow())
+                .background(mMainToolbar)
+                .build();
+        // ----------------------------------------
 
     }
 
@@ -146,6 +163,13 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerMain.openDrawer(GravityCompat.START);
                 return true;
+
+            //白色
+            case R.id.item_white:
+                prism.setColour(0xFF0000);
+                return true;
+
+
         }
         return super.onOptionsItemSelected(item);
     }

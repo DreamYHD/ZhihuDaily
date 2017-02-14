@@ -1,15 +1,17 @@
 apply plugin: 'com.android.application'
+//使用greendao
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     tasks.whenTaskAdded { task ->
         if (task.name.contains("lint")
-                ||task.name.equals("clean")
+                || task.name.equals("clean")
                 //如果项目中有用到aidl则不可以舍弃这个任务
-                ||task.name.contains("Aidl")
+                || task.name.contains("Aidl")
 //用不到测试的时候就可以先关闭
-                ||task.name.contains("mockableAndroidJar")
-                ||task.name.contains("UnitTest")
-                ||task.name.contains("AndroidTest")
+                || task.name.contains("mockableAndroidJar")
+                || task.name.contains("UnitTest")
+                || task.name.contains("AndroidTest")
 //用不到NDK和JNI的也关闭掉
                 || task.name.contains("Ndk")
                 || task.name.contains("Jni")
@@ -36,6 +38,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //greendao配置
+    greendao {
+        //版本号，升级时可配置
+        schemaVersion 1
+        daoPackage 'package com.androidlab.zhihudaily.gen'
+        targetGenDir 'src/main/java/data/greenDao'
+    }
 }
 
 
@@ -47,21 +56,28 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
+    //recyclerview
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
+    //Gson
     compile 'com.google.code.gson:gson:2.8.0'
+    //RxJava
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
 
+    //Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //retrofit+okHttp
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
     compile 'com.squareup.okhttp3:okhttp:3.4.2'
-
+    //butterKnife
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
-
+    //自定义换肤
+    compile 'com.stylingandroid.prism:prism:1.0.1'
+    //greendao依赖
+    compile 'org.greenrobot:greendao:3.2.0'
 
 }

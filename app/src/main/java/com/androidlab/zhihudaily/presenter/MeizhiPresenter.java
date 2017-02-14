@@ -1,14 +1,10 @@
 package com.androidlab.zhihudaily.presenter;
 
-import android.support.annotation.NonNull;
-
 import com.androidlab.zhihudaily.contract.MeiziImageContract;
 import com.androidlab.zhihudaily.data.bean.MeizhiBean;
 import com.androidlab.zhihudaily.data.getdata.HttpMthodMeizhi;
 import com.androidlab.zhihudaily.utils.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import rx.Subscriber;

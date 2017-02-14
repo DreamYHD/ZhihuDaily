@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import com.androidlab.zhihudaily.R;
 import com.androidlab.zhihudaily.contract.MeiziImageContract;
 import com.androidlab.zhihudaily.data.bean.MeizhiBean;
-import com.androidlab.zhihudaily.utils.Logger;
 import com.androidlab.zhihudaily.view.adapter.MeiziAdapter;
 
 import java.util.ArrayList;
