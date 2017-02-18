@@ -18,9 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.OtherActivity">
+        <activity android:name=".view.activity.CollectionMangerActivity">
         </activity>
         <activity android:name=".view.activity.NewsContentActivity">
+        </activity>
+        <activity android:name=".view.activity.CollectionSetingActivity">
         </activity>
     </application>
 

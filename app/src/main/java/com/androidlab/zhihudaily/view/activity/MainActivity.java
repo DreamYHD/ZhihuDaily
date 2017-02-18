@@ -87,9 +87,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openCollection() {
-        Intent intent = new Intent(this, OtherActivity.class);
+        Intent intent = new Intent(this, CollectionMangerActivity.class);
         startActivity(intent);
-
 
     }
 

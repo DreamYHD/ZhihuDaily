@@ -6,7 +6,7 @@
     android:id="@+id/activity_other"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.androidlab.zhihudaily.view.activity.OtherActivity">
+    tools:context="com.androidlab.zhihudaily.view.activity.CollectionMangerActivity">
 
     <android.support.design.widget.AppBarLayout
 

@@ -12,7 +12,8 @@ import com.androidlab.zhihudaily.view.fragment.CollectionFragment;
  * Created by Haodong on 2017/1/31.
  */
 
-public class ActivityUtils {
+public class
+ActivityUtils {
     private ActivityUtils(){
 
 

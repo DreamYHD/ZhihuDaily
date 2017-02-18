@@ -18,7 +18,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
-        //全局配置，只希望single有一个数据库操作对象
+        //全局配置，只希望single有一个操作对象
         GreenDaoManager.getInstance();
         HttpMethodDaily.getInstance();
         HttpMthodMeizhi.getInstance();

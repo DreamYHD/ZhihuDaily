@@ -61,12 +61,7 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
         mRecycleCollection.setLayoutManager(mLinearLayoutManager);
         mRecycleCollection.setAdapter(mCollectionAdapter);
         mRecycleCollection.addItemDecoration(new MyDecoration(getContext(),MyDecoration.HORIZONTAL_LIST));
-        mCollectionAdapter.setOnItemClickListener(new CollectionAdapter.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
 
-            }
-        });
         return view;
     }
 
