@@ -17,8 +17,6 @@ public interface MeiziImageContract {
         /**
          * 显示图片
          */
-
-
         void setData(List<MeizhiBean.ResultsBean> list);
 
 

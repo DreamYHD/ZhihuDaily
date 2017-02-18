@@ -38,16 +38,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
 
-
     //define interface
-    public static interface OnRecyclerViewItemClickListener {
+    public interface OnRecyclerViewItemClickListener {
         void onItemClick(View view, int position);
     }
+
     public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
-
-
 
 
     @Override
@@ -59,13 +57,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        if(mOnItemClickListener != null){
+        if (mOnItemClickListener != null) {
             //为ItemView设置监听器
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = holder.getLayoutPosition(); // 1
-                    mOnItemClickListener.onItemClick(holder.itemView,position); // 2
+                    mOnItemClickListener.onItemClick(holder.itemView, position); // 2
                 }
             });
         }

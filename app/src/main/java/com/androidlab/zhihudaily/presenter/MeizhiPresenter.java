@@ -17,27 +17,24 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
 
     private final MeiziImageContract.View mView;
 
-    private HttpMthodMeizhi mHttpMthodMeizhi;
 
     private Subscriber subscriber;
 
 
-
-
     public MeizhiPresenter(MeiziImageContract.View view) {
 
-        mHttpMthodMeizhi = HttpMthodMeizhi.getInstance();
+
         mView = view;
         mView.setPresenter(this);
     }
 
     @Override
     public void loadMeizhi() {
-            subscriber = new Subscriber<MeizhiBean>() {
-                @Override
-                public void onCompleted() {
+        subscriber = new Subscriber<MeizhiBean>() {
+            @Override
+            public void onCompleted() {
 
-                }
+            }
 
             @Override
             public void onError(Throwable e) {
@@ -46,10 +43,10 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
 
             @Override
             public void onNext(MeizhiBean resultsBean) {
-               if(resultsBean.getResults().size()!=0){
-                   Logger.error("yhd","datas != null");
-                   mView.setData(resultsBean.getResults());
-               }
+                if (resultsBean.getResults().size() != 0) {
+                    Logger.error("yhd", "datas != null");
+                    mView.setData(resultsBean.getResults());
+                }
 
             }
 
@@ -72,9 +69,9 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
 
     @Override
     public void start() {
-        Random random=new Random();
+        Random random = new Random();
         loadMeizhi();
-        mHttpMthodMeizhi.getGankMeizi(subscriber,random.nextInt(45) ,random.nextInt(12));
+        HttpMthodMeizhi.getInstance().getGankMeizi(subscriber, random.nextInt(45), random.nextInt(12));
 
     }
 }

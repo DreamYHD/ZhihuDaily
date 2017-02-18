@@ -1,4 +1,4 @@
-package com.androidlab.zhihudaily.data.greenDao;
+package com.androidlab.zhihudaily.data.local;
 
 
 import java.util.Map;

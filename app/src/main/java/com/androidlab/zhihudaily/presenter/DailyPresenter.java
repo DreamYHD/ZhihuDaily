@@ -23,11 +23,9 @@ public class DailyPresenter implements ZhihuDailyContract.Presenter {
 
     private final ZhihuDailyContract.View mView;
 
-    private HttpMethodDaily mHttpMethodDaily;
 
 
     public DailyPresenter(ZhihuDailyContract.View view) {
-        mHttpMethodDaily=HttpMethodDaily.getInstance();
         mView = view;
         mView.setPresenter(this);
     }
@@ -93,7 +91,7 @@ public class DailyPresenter implements ZhihuDailyContract.Presenter {
     @Override
     public void loadDaily(int id) {
         loadDailyContent();
-        mHttpMethodDaily.getNewContent(mContentSubscribe,id);
+        HttpMethodDaily.getInstance().getNewContent(mContentSubscribe,id);
 
     }
 
@@ -108,7 +106,7 @@ public class DailyPresenter implements ZhihuDailyContract.Presenter {
     @Override
     public void start() {
         loadLatestDaily();
-        mHttpMethodDaily.getNewLatest(mSubscriber);
+        HttpMethodDaily.getInstance().getNewLatest(mSubscriber);
 
     }
 }

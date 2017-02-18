@@ -42,14 +42,18 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (null != images.get(position).getUrl()) {
+        if (null != images.
+                get(position).getUrl()) {
             Glide.with(mContext)
                     .load(images.get(position).getUrl())
                     .placeholder(R.drawable.load)
                     .override(750, 750)
                     .fitCenter()
                     .into(holder.mImageView);
+
+
         }
+
 
     }
 

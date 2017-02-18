@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.androidlab.zhihudaily.R;
 import com.androidlab.zhihudaily.contract.ZhihuDailyContract;
-import com.androidlab.zhihudaily.data.bean.NewsBean;;
+import com.androidlab.zhihudaily.data.bean.NewsBean;
 import com.androidlab.zhihudaily.utils.Logger;
 import com.androidlab.zhihudaily.utils.MyDecoration;
 import com.androidlab.zhihudaily.view.activity.NewsContentActivity;
@@ -68,14 +68,15 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
         mNewsRecyclerView.setLayoutManager(mLinearLayoutManager);
         mNewsRecyclerView.addItemDecoration(new MyDecoration(getContext(), MyDecoration.HORIZONTAL_LIST));
 
+
         mNewsAdapter.setOnItemClickListener(new NewsAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if(position<mNewsBeanList.size()){
+                if (position < mNewsBeanList.size()) {
                     mPresenter.loadDaily(mNewsBeanList.get(position).getId());
-                    Logger.debug("dailyUI",mNewsBeanList.get(position).getId()+"");
-                }else {
-                    mPresenter.loadDaily(mTopStoriesBeanList.get(position-mNewsBeanList.size()).getId());
+                    Logger.debug("dailyUI", mNewsBeanList.get(position).getId() + "");
+                } else {
+                    mPresenter.loadDaily(mTopStoriesBeanList.get(position - mNewsBeanList.size()).getId());
 
                 }
 
@@ -107,14 +108,14 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
     @Override
     public void goNewsDetail(String url) {
         Intent intent = new Intent(getContext(), NewsContentActivity.class);
-        intent.putExtra("url",url);
+        intent.putExtra("url", url);
         startActivity(intent);//将Intent传递给Activity
 
     }
 
     @Override
     public void setPresenter(ZhihuDailyContract.Presenter presenter) {
-        this.mPresenter = presenter;
+        mPresenter = presenter;
 
     }
 }

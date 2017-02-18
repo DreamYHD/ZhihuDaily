@@ -42,8 +42,7 @@ android {
     greendao {
         //版本号，升级时可配置
         schemaVersion 1
-        daoPackage 'package com.androidlab.zhihudaily.gen'
-        targetGenDir 'src/main/java/data/greenDao'
+
     }
 }
 
@@ -79,5 +78,11 @@ dependencies {
     compile 'com.stylingandroid.prism:prism:1.0.1'
     //greendao依赖
     compile 'org.greenrobot:greendao:3.2.0'
+
+    compile 'com.rom4ek:arcnavigationview:1.0.2'
+    compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.0.5'
+
+
+
 
 }

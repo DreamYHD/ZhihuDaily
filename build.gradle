@@ -5,6 +5,7 @@ buildscript {
         jcenter()
         //greenDao必须
         mavenCentral()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
