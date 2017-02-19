@@ -5,9 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.androidlab.zhihudaily.R;
 import com.androidlab.zhihudaily.data.bean.Collection;
+import com.androidlab.zhihudaily.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +61,11 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
             });
 
         }
+        Logger.debug("adaptertest",mCollectionList.get(position).getNoteText().toString());
+
+        holder.timeView.setText(mCollectionList.get(position).getTime().toString());
+        holder.contView.setText(mCollectionList.get(position).getNoteText().toString());
+
     }
 
     @Override
@@ -67,8 +74,12 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView timeView;
+        private TextView contView;
         public ViewHolder(View itemView) {
             super(itemView);
+            timeView= (TextView) itemView.findViewById(R.id.time_item);
+            contView= (TextView) itemView.findViewById(R.id.collection_content_item);
         }
     }
 }

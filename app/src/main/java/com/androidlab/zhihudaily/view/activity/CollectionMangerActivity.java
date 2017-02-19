@@ -6,14 +6,21 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.androidlab.zhihudaily.R;
+import com.androidlab.zhihudaily.data.bean.Collection;
+import com.androidlab.zhihudaily.data.manager.CollectionRepository;
+import com.androidlab.zhihudaily.presenter.CollectionPresenter;
 import com.androidlab.zhihudaily.utils.ActivityUtils;
 import com.androidlab.zhihudaily.view.fragment.CollectionFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,18 +38,24 @@ public class CollectionMangerActivity extends AppCompatActivity {
     CoordinatorLayout mActivityOther;
     @BindView(R.id.float_action_button)
     FloatingActionButton mFloatActionButton;
+    private List<Collection>mCollectionList=new ArrayList<>();
+    private CollectionFragment collectionFragment=CollectionFragment.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
         ButterKnife.bind(this);
+
         setSupportActionBar(mCollectionToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        CollectionFragment collectionFragment=CollectionFragment.newInstance();
         ActivityUtils.replaceFragemntToActivity(getSupportFragmentManager(),collectionFragment,R.id.collection_coord);
+        new CollectionPresenter(collectionFragment,new CollectionRepository());
+
+
+
 
 
     }
@@ -67,9 +80,11 @@ public class CollectionMangerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if(20==resultCode){
+
             String noteContent=data.getExtras().getString("noteContent");
             String time=data.getExtras().getString("nowTime");
-
+            Collection collection=new Collection(null,time,noteContent,null,null);
+            collectionFragment.setCollectionList(collection);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

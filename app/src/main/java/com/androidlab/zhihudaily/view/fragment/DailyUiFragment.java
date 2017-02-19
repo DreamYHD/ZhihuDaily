@@ -55,20 +55,20 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
         super.onCreate(savedInstanceState);
         mNewsBeanList = new ArrayList<NewsBean.StoriesBean>();
         mTopStoriesBeanList = new ArrayList<NewsBean.TopStoriesBean>();
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        mNewsAdapter = new NewsAdapter(mNewsBeanList, mTopStoriesBeanList, getContext());
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.daily_news_layout, container, false);
         ButterKnife.bind(this, view);
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
-        mNewsAdapter = new NewsAdapter(mNewsBeanList, mTopStoriesBeanList, getContext());
+
         mNewsRecyclerView.setAdapter(mNewsAdapter);
         mNewsRecyclerView.setLayoutManager(mLinearLayoutManager);
         mNewsRecyclerView.addItemDecoration(new MyDecoration(getContext(), MyDecoration.HORIZONTAL_LIST));
-
-
         mNewsAdapter.setOnItemClickListener(new NewsAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

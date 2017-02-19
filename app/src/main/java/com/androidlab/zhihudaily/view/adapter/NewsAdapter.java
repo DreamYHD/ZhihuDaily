@@ -108,7 +108,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             mImageView = (ImageView) itemView.findViewById(R.id.daily_image);
             mTextView = (TextView) itemView.findViewById(R.id.item_daily);
         }

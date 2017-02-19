@@ -17,11 +17,17 @@ public interface CollectionContract {
         void show(List<Collection> mCollectionList);
 
 
+
+
     }
 
     interface Presenter extends BasePresenter {
 
         void collectionThing();
+
+        void addColl(Collection collection);
+
+        void remove(Collection collection);
 
 
     }

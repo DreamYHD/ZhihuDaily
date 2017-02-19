@@ -7,6 +7,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +29,14 @@ import butterknife.ButterKnife;
  */
 
 public class MeizhiFragment extends BaseFragment implements MeiziImageContract.View {
-    private  MeiziImageContract.Presenter mPresenter;
+
+    private MeiziImageContract.Presenter mPresenter;
     @BindView(R.id.meizi_recycle_view)
     RecyclerView mMeiziRecycleView;
     private MeiziAdapter mMeiziAdapter;
-    private List<MeizhiBean.ResultsBean>list=new ArrayList<MeizhiBean.ResultsBean>();
+    private List<MeizhiBean.ResultsBean> list = new ArrayList<MeizhiBean.ResultsBean>();
 
-    private GridLayoutManager mLayoutManager;
+    private StaggeredGridLayoutManager mLayoutManager;
 
     public static MeizhiFragment newInstance() {
         return new MeizhiFragment();
@@ -43,7 +45,10 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);}
+        super.onCreate(savedInstanceState);
+        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mMeiziAdapter = new MeiziAdapter(getContext(), list);
+    }
 
     @Override
     public void onResume() {
@@ -56,11 +61,8 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.meizhi_image_layout, null);
         ButterKnife.bind(this, view);
-        mLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL, false);
-        mMeiziAdapter=new MeiziAdapter(getContext(), list);
         mMeiziRecycleView.setLayoutManager(mLayoutManager);
         mMeiziRecycleView.setAdapter(mMeiziAdapter);
-        mMeiziRecycleView.setItemAnimator(new DefaultItemAnimator());
         mMeiziRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -71,7 +73,7 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 //判断是否滑动到底部
-                if (!ViewCompat.canScrollVertically(recyclerView, 1)){
+                if (!ViewCompat.canScrollVertically(recyclerView, 1)) {
 
                     mPresenter.start();
 
@@ -85,8 +87,8 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     @Override
     public void setPresenter(MeiziImageContract.Presenter presenter) {
         mPresenter = presenter;
-
     }
+
     //添加数据
     public void setData(List<MeizhiBean.ResultsBean> list) {
 
