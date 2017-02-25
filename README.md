@@ -19,4 +19,10 @@ MVP+Retrofit+OkHttp+RxJava+GreenDao
     compile 'com.rom4ek:arcnavigationview:1.0.2'
     compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.0.5'
     compile 'com.android.support:cardview-v7:25.1.0'
+    
 ```
+## 感谢
+####https://inthecheesefactory.com/blog/retrofit-2.0/en
+####http://gank.io/post/56e80c2c677659311bed9841
+####http://gank.io/post/560e15be2dca930e00da1083#toc_4
+####http://songning.me/2016/11/03/google-rxjava-mvp/
