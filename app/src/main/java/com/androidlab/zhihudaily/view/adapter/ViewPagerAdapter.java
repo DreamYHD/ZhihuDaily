@@ -9,10 +9,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.androidlab.zhihudaily.presenter.DailyPresenter;
 import com.androidlab.zhihudaily.presenter.MeizhiPresenter;
+import com.androidlab.zhihudaily.presenter.SmilePresenter;
 import com.androidlab.zhihudaily.view.fragment.CollectionFragment;
 import com.androidlab.zhihudaily.view.fragment.DailyUiFragment;
 import com.androidlab.zhihudaily.view.fragment.MeizhiFragment;
 import com.androidlab.zhihudaily.view.fragment.RecentDailyFragment;
+import com.androidlab.zhihudaily.view.fragment.SmileFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private MeizhiFragment mMeizhiFragment;
     private DailyUiFragment mDailyUiFragment;
+    private SmileFragment mSmileFragment;
 
 
     private Context mContext;
@@ -46,8 +49,14 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         new DailyPresenter(mDailyUiFragment);
         mFragmentList.add(mDailyUiFragment);
 
+        mSmileFragment=SmileFragment.newInstance();
+        new SmilePresenter(mSmileFragment);
+        mFragmentList.add(mSmileFragment);
+
+
         mTitles.add("图片欣赏");
         mTitles.add("新闻看看");
+        mTitles.add("每日一笑");
 
         this.mContext = context;
 

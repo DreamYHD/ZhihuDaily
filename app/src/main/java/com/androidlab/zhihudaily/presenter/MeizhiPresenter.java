@@ -23,7 +23,6 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
 
     public MeizhiPresenter(MeiziImageContract.View view) {
 
-
         mView = view;
         mView.setPresenter(this);
     }

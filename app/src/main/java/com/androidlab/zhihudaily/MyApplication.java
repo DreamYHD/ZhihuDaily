@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.androidlab.zhihudaily.data.getdata.HttpMethodDaily;
+import com.androidlab.zhihudaily.data.getdata.HttpMethodSmile;
 import com.androidlab.zhihudaily.data.getdata.HttpMthodMeizhi;
 import com.androidlab.zhihudaily.data.manager.GreenDaoManager;
 
@@ -22,6 +23,7 @@ public class MyApplication extends Application {
         GreenDaoManager.getInstance();
         HttpMethodDaily.getInstance();
         HttpMthodMeizhi.getInstance();
+        HttpMethodSmile.getInstance();
     }
 
     public static Context getContext() {

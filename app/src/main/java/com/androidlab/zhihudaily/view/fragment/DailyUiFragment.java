@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.androidlab.zhihudaily.R;
 import com.androidlab.zhihudaily.contract.ZhihuDailyContract;
 import com.androidlab.zhihudaily.data.bean.NewsBean;
+import com.androidlab.zhihudaily.presenter.DailyPresenter;
 import com.androidlab.zhihudaily.utils.Logger;
 import com.androidlab.zhihudaily.utils.MyDecoration;
 import com.androidlab.zhihudaily.view.activity.NewsContentActivity;
@@ -47,16 +48,18 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+        if(mPresenter!=null){
+            mPresenter.start();
+
+        }else {
+            mPresenter=new DailyPresenter(this);
+        }
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNewsBeanList = new ArrayList<NewsBean.StoriesBean>();
-        mTopStoriesBeanList = new ArrayList<NewsBean.TopStoriesBean>();
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
-        mNewsAdapter = new NewsAdapter(mNewsBeanList, mTopStoriesBeanList, getContext());
+
     }
 
     @Nullable
@@ -65,7 +68,10 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
 
         View view = inflater.inflate(R.layout.daily_news_layout, container, false);
         ButterKnife.bind(this, view);
-
+        mNewsBeanList = new ArrayList<NewsBean.StoriesBean>();
+        mTopStoriesBeanList = new ArrayList<NewsBean.TopStoriesBean>();
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
+        mNewsAdapter = new NewsAdapter(mNewsBeanList, mTopStoriesBeanList, getContext());
         mNewsRecyclerView.setAdapter(mNewsAdapter);
         mNewsRecyclerView.setLayoutManager(mLinearLayoutManager);
         mNewsRecyclerView.addItemDecoration(new MyDecoration(getContext(), MyDecoration.HORIZONTAL_LIST));
@@ -117,5 +123,11 @@ public class DailyUiFragment extends BaseFragment implements ZhihuDailyContract.
     public void setPresenter(ZhihuDailyContract.Presenter presenter) {
         mPresenter = presenter;
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter=null;
     }
 }

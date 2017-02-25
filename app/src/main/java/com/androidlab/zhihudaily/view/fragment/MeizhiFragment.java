@@ -11,11 +11,13 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.androidlab.zhihudaily.R;
 import com.androidlab.zhihudaily.contract.MeiziImageContract;
 import com.androidlab.zhihudaily.data.bean.MeizhiBean;
+import com.androidlab.zhihudaily.presenter.MeizhiPresenter;
 import com.androidlab.zhihudaily.view.adapter.MeiziAdapter;
 
 import java.util.ArrayList;
@@ -46,14 +48,18 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mMeiziAdapter = new MeiziAdapter(getContext(), list);
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+        if(mPresenter!=null){
+            mPresenter.start();
+        }else {
+            mPresenter=new MeizhiPresenter(this);
+        }
+
     }
 
     @Nullable
@@ -61,6 +67,8 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.meizhi_image_layout, null);
         ButterKnife.bind(this, view);
+        mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mMeiziAdapter = new MeiziAdapter(getContext(), list);
         mMeiziRecycleView.setLayoutManager(mLayoutManager);
         mMeiziRecycleView.setAdapter(mMeiziAdapter);
         mMeiziRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -104,5 +112,6 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     public void onDestroy() {
 
         super.onDestroy();
+        mPresenter=null;
     }
 }

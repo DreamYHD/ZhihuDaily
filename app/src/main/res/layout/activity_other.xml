@@ -27,7 +27,7 @@
         android:layout_height="match_parent"/>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/float_action_button"
-        android:src="@drawable/float_action_but"
+        android:src="@drawable/float_action_button"
         android:layout_gravity="right|bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

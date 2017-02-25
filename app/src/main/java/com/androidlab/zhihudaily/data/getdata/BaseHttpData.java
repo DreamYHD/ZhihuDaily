@@ -12,6 +12,7 @@ public class BaseHttpData {
 
     public static final String Base_Daily_Url="http://news-at.zhihu.com/api/4/";
 
+    public static final String Base_Smile_Url="http://apis.haoservice.com/lifeservice/Joke/";
     public static final int DEFAULT_TIMEOUT_CONNECT=5;
 
     public static final int DEFAULT_TIMEOUT_WRITE=5;

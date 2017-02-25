@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
     public static final int[] mColorArray = new int[]{
             android.R.color.holo_blue_light,
             android.R.color.holo_blue_light,
+            android.R.color.holo_blue_light,
     };
     public static final int[] mImageArray  = new int[]{
             R.drawable.timg,
-            R.drawable.timgtwo
+            R.drawable.timgtwo,
+            R.drawable.timgthree
     };
 
 
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void openCollection() {
+    private void   openCollection() {
         Intent intent = new Intent(this, CollectionMangerActivity.class);
         startActivity(intent);
 
