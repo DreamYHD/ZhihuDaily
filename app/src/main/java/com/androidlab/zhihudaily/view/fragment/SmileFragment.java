@@ -3,6 +3,7 @@ package com.androidlab.zhihudaily.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,8 @@ public class SmileFragment extends BaseFragment implements SmileContract.View {
     RecyclerView mSmileRecycle;
     @BindView(R.id.float_smile)
     FloatingActionButton mFloatSmile;
+    @BindView(R.id.smile_progress)
+    ContentLoadingProgressBar mSmileProgress;
     private SmileAdapter mSmileAdapter;
     private SmileContract.Presenter mPresenter;
     private List<SmileBean.ResultBean> mResultBeen;
@@ -51,10 +54,13 @@ public class SmileFragment extends BaseFragment implements SmileContract.View {
     public void onResume() {
         super.onResume();
         mPresenter.start();
+
     }
+
     @OnClick(R.id.float_smile)
-    public void changeSmile(){
+    public void changeSmile() {
         mPresenter.loadMore();
+        mSmileProgress.show();
     }
 
     @Nullable
@@ -75,6 +81,7 @@ public class SmileFragment extends BaseFragment implements SmileContract.View {
             }
         });
 
+
         return view;
     }
 
@@ -83,12 +90,14 @@ public class SmileFragment extends BaseFragment implements SmileContract.View {
         mResultBeen.clear();
         mResultBeen.addAll(list);
         mSmileAdapter.notifyDataSetChanged();
+        mSmileProgress.hide();
         mSmileRecycle.scrollToPosition(0);
     }
 
     @Override
     public void setPresenter(SmileContract.Presenter presenter) {
         this.mPresenter = presenter;
+
 
 
     }

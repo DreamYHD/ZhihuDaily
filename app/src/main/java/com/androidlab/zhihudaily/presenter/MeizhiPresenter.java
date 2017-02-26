@@ -1,7 +1,12 @@
 package com.androidlab.zhihudaily.presenter;
 
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+
 import com.androidlab.zhihudaily.contract.MeiziImageContract;
 import com.androidlab.zhihudaily.data.bean.MeizhiBean;
+import com.androidlab.zhihudaily.data.getdata.HttpMethodDown;
 import com.androidlab.zhihudaily.data.getdata.HttpMthodMeizhi;
 import com.androidlab.zhihudaily.utils.Logger;
 
@@ -19,6 +24,8 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
 
 
     private Subscriber subscriber;
+
+    private Subscriber mDownSubscriber;
 
 
     public MeizhiPresenter(MeiziImageContract.View view) {
@@ -57,12 +64,34 @@ public class MeizhiPresenter implements MeiziImageContract.Presenter {
     @Override
     public void updateMeizhi() {
 
+
     }
 
     @Override
     public void success(boolean active) {
 
 
+    }
+
+    @Override
+    public void downloadImage(String url) {
+
+        mDownSubscriber=new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+            @Override
+            public void onError(Throwable e) {
+            }
+            @Override
+            public void onNext(String string) {
+                if (string!=null){
+                    mView.showToast("图片下载成功"+string);
+                }
+            }
+        };
+        HttpMethodDown.getInstance().downloadImage(mDownSubscriber,url);
     }
 
 

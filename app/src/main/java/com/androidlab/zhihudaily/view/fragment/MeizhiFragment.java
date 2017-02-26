@@ -1,9 +1,11 @@
 package com.androidlab.zhihudaily.view.fragment;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,6 +50,17 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+        builder.setTitle("提示：");
+        builder.setMessage("长按下载图片");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        builder.show();
 
     }
 
@@ -60,6 +73,7 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
             mPresenter=new MeizhiPresenter(this);
         }
 
+
     }
 
     @Nullable
@@ -67,10 +81,19 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.meizhi_image_layout, null);
         ButterKnife.bind(this, view);
+
+
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mMeiziAdapter = new MeiziAdapter(getContext(), list);
         mMeiziRecycleView.setLayoutManager(mLayoutManager);
         mMeiziRecycleView.setAdapter(mMeiziAdapter);
+        mMeiziAdapter.setOnRecyclerViewItemClickListener(new MeiziAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                mPresenter.downloadImage(list.get(position).getUrl());
+            }
+        });
         mMeiziRecycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -82,9 +105,7 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
                 super.onScrolled(recyclerView, dx, dy);
                 //判断是否滑动到底部
                 if (!ViewCompat.canScrollVertically(recyclerView, 1)) {
-
                     mPresenter.start();
-
                 }
             }
         });
@@ -99,11 +120,13 @@ public class MeizhiFragment extends BaseFragment implements MeiziImageContract.V
 
     //添加数据
     public void setData(List<MeizhiBean.ResultsBean> list) {
-
         this.list.addAll(list);
-
         mMeiziAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void showToast(String toast) {
+        Toast.makeText(getContext(), toast, Toast.LENGTH_SHORT).show();
 
     }
 

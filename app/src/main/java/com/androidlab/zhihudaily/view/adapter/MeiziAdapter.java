@@ -25,6 +25,15 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.ViewHolder> 
 
     private static List<MeizhiBean.ResultsBean> images = new ArrayList<MeizhiBean.ResultsBean>();
     private Context mContext;
+    private OnRecyclerViewItemClickListener mOnRecyclerViewItemClickListener;
+
+    public interface OnRecyclerViewItemClickListener{
+        void onItemClick(View view,int position);
+    }
+
+    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
+        mOnRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
+    }
 
     public MeiziAdapter(Context context, List<MeizhiBean.ResultsBean> list) {
 
@@ -41,7 +50,18 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        if(mOnRecyclerViewItemClickListener!=null) {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int position=holder.getLayoutPosition();
+                    mOnRecyclerViewItemClickListener.onItemClick(holder.itemView,position);
+
+                    return  false;
+                }
+            });
+        }
         if (null != images.
                 get(position).getUrl()) {
             Glide.with(mContext)

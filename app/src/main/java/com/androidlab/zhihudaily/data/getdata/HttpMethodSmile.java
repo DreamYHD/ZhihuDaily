@@ -23,7 +23,7 @@ public class HttpMethodSmile extends BaseHttpData{
 
     private SmileApi mSmileApi;
 
-    public static final   String key="0aebd5cd60774fc1821acf865e466040";
+    public static final  String key="0aebd5cd60774fc1821acf865e466040";
 
 
 
@@ -43,8 +43,6 @@ public class HttpMethodSmile extends BaseHttpData{
 
 
     }
-
-
     private static class SingleHolder{
 
         private static final HttpMethodSmile INSTANCE=new HttpMethodSmile();

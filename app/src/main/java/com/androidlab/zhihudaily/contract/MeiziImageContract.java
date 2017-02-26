@@ -19,6 +19,8 @@ public interface MeiziImageContract {
          */
         void setData(List<MeizhiBean.ResultsBean> list);
 
+        void showToast(String toast);
+
 
     }
 
@@ -41,5 +43,9 @@ public interface MeiziImageContract {
          * @param active
          */
         void success(boolean active);
+
+        void downloadImage(String url);
+
+
     }
 }

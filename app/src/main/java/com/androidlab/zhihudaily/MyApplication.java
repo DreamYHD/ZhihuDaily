@@ -1,9 +1,14 @@
 package com.androidlab.zhihudaily;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.androidlab.zhihudaily.data.getdata.HttpMethodDaily;
+import com.androidlab.zhihudaily.data.getdata.HttpMethodDown;
 import com.androidlab.zhihudaily.data.getdata.HttpMethodSmile;
 import com.androidlab.zhihudaily.data.getdata.HttpMthodMeizhi;
 import com.androidlab.zhihudaily.data.manager.GreenDaoManager;
@@ -24,6 +29,8 @@ public class MyApplication extends Application {
         HttpMethodDaily.getInstance();
         HttpMthodMeizhi.getInstance();
         HttpMethodSmile.getInstance();
+        HttpMethodDown.getInstance();
+
     }
 
     public static Context getContext() {

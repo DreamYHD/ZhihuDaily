@@ -24,7 +24,7 @@ android {
     buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId "com.androidlab.zhihudaily"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -55,27 +55,19 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
-    //recyclerview
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
-    //Gson
     compile 'com.google.code.gson:gson:2.8.0'
-    //RxJava
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
-    //Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //retrofit+okHttp
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
     compile 'com.squareup.okhttp3:okhttp:3.4.2'
-    //butterKnife
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    //自定义换肤
     compile 'com.stylingandroid.prism:prism:1.0.1'
-    //greendao依赖
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'com.rom4ek:arcnavigationview:1.0.2'
     compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.0.5'
