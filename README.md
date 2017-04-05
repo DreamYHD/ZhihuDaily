@@ -23,11 +23,11 @@ MVP+Retrofit+OkHttp+RxJava+GreenDao
     
 ```
 ## 感谢
-####https://inthecheesefactory.com/blog/retrofit-2.0/en
-####http://gank.io/post/56e80c2c677659311bed9841
-####http://gank.io/post/560e15be2dca930e00da1083#toc_4
-####http://songning.me/2016/11/03/google-rxjava-mvp/
-####https://futurestud.io/tutorials/retrofit-2-how-to-use-dynamic-urls-for-requests
+#### https://inthecheesefactory.com/blog/retrofit-2.0/en
+#### http://gank.io/post/56e80c2c677659311bed9841
+#### http://gank.io/post/560e15be2dca930e00da1083#toc_4
+#### http://songning.me/2016/11/03/google-rxjava-mvp/
+#### https://futurestud.io/tutorials/retrofit-2-how-to-use-dynamic-urls-for-requests
 ## 知识点总结
 #### 封装网络请求（Retrofit+OkHttp+RxJava）
 ```java
