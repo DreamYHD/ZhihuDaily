@@ -1,7 +1,8 @@
 # 干货日报
 
 MVP+Retrofit+OkHttp+RxJava+GreenDao
-###用到的依赖
+
+### 用到的依赖
 ```java
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.google.code.gson:gson:2.8.0'
@@ -28,7 +29,7 @@ MVP+Retrofit+OkHttp+RxJava+GreenDao
 ####http://songning.me/2016/11/03/google-rxjava-mvp/
 ####https://futurestud.io/tutorials/retrofit-2-how-to-use-dynamic-urls-for-requests
 ## 知识点总结
-####封装网络请求（Retrofit+OkHttp+RxJava）
+#### 封装网络请求（Retrofit+OkHttp+RxJava）
 ```java
 public class HttpMthodMeizhi extends BaseHttpData {
 
@@ -78,7 +79,7 @@ public class HttpMthodMeizhi extends BaseHttpData {
 }
 
 ```
-####初始化GreenDao
+#### 初始化GreenDao
 ```java
 @Entity(nameInDb = "Collection")
 public class Collection {
@@ -138,7 +139,7 @@ public class Collection {
 
 }
 ```
-####封装数据库
+#### 封装数据库
 ```java
 public class GreenDaoManager {
 
@@ -191,7 +192,7 @@ public class GreenDaoManager {
 }
 
 ```
-####RecyclerView的点击事件
+#### RecyclerView的点击事件
 ```java
  public  interface OnRecyclerViewItemClickListener{
          void onItemClick(View view,int position);
